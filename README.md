@@ -24,7 +24,8 @@ The work involved reviewing the existing documentation structure, identifying ar
 
 ## Repository Structure
 
-TW4TECH Documentation 
+TW4TECH Documentation
+
 Deliverables/
 ├── README.md
 └── OPNsense/

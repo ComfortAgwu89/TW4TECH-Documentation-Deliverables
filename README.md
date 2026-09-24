@@ -1,10 +1,10 @@
-# TW4T Documentation Deliverables
+# TW4TECH Documentation Deliverables
 
 This repository contains my documentation deliverables for the TW4Tech technical writing program.
 
-Project
+## Project
 
-## OPNsense Documentation
+### OPNsense Documentation
 
 This deliverable focuses on improving the documentation experience for the OPNsense documentation repository.
 
@@ -24,7 +24,8 @@ The work involved reviewing the existing documentation structure, identifying ar
 
 ## Repository Structure
 
-TW4T documentation Deliverables/
+TW4TECH Documentation 
+Deliverables/
 ├── README.md
 └── OPNsense/
     └── README.md

@@ -1,0 +1,53 @@
+---
+sidebar_position: 2
+title: Integrate
+---
+
+# Call OPNsense from an app
+
+Point your code at `https://192.168.1.1` (or your LAN IP). Auth is HTTP Basic: username = API **key**, password = API **secret**.
+
+## cURL
+
+```bash
+curl -k -u "$OPN_KEY:$OPN_SECRET" \
+  https://192.168.1.1/api/core/firmware/status
+```
+
+## Node.js 20+
+
+```js
+const BASE = process.env.OPN_URL ?? "https://192.168.1.1";
+const key = process.env.OPN_KEY;
+const secret = process.env.OPN_SECRET;
+
+const res = await fetch(`${BASE}/api/core/firmware/status`, {
+  headers: {
+    Authorization: "Basic " + Buffer.from(`${key}:${secret}`).toString("base64"),
+  },
+});
+const json = await res.json();
+```
+
+Lab only: Node will reject the factory certificate unless you set `NODE_TLS_REJECT_UNAUTHORIZED=0` (never in production) or trust a real cert.
+
+## Python
+
+Official how-to uses `requests`:
+
+```python
+import requests
+
+url = "https://192.168.1.1/api/core/firmware/status"
+r = requests.get(url, auth=(key, secret), verify=False)  # verify=False: lab
+print(r.status_code, r.text[:200])
+```
+
+Prefer `verify="OPNsense.pem"` when you exported the cert.
+
+## Checklist
+
+1. GUI login works on the same host
+2. The user has privileges for **System → Firmware** (or whichever page owns the route)
+3. You send Basic auth, not `X-API-Key`
+4. POST bodies are JSON when the GUI sends JSON

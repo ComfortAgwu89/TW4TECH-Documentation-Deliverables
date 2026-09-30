@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log*
+.env
+.env.local
+data/tasks.json
+data/test-tasks.json
+.DS_Store
+Thumbs.db
+*.log
+website/node_modules
+website/build
+website/.docusaurus

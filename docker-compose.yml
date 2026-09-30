@@ -1,0 +1,26 @@
+services:
+  api:
+    build: .
+    image: tw4-api:1.0.0
+    container_name: tw4-api
+    ports:
+      - "${PORT:-3000}:3000"
+    environment:
+      HOST: 0.0.0.0
+      PORT: 3000
+      API_KEY: ${API_KEY:-change-me-now}
+      DATA_FILE: /app/data/tasks.json
+      LOG_LEVEL: ${LOG_LEVEL:-info}
+      NODE_ENV: production
+    volumes:
+      - tw4_data:/app/data
+    healthcheck:
+      test: ["CMD", "node", "src/healthcheck.js"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped
+
+volumes:
+  tw4_data:

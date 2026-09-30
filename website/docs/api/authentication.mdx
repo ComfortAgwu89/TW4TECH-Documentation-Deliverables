@@ -1,0 +1,20 @@
+---
+sidebar_position: 2
+title: Authentication
+---
+
+# Authentication
+
+OPNsense does not use a single `X-API-Key` header. You create a key/secret pair on a **user**. curl sends them as HTTP Basic.
+
+```bash
+curl -k -u "KEY:SECRET" https://192.168.1.1/api/core/firmware/status
+```
+
+In Postman: Authorization type **Basic Auth**, username = key, password = secret.
+
+The pair is not the same as the `root` GUI password. You generate it under **System → Access → Users**. The secret is not stored for a second download.
+
+The user must be allowed to open the GUI page that owns the endpoint (Effective Privileges).
+
+Do not put the secret in the query string. The server expects Basic auth.

@@ -1,0 +1,100 @@
+---
+sidebar_position: 1
+title: Quickstart
+---
+
+# First GUI and first API call
+
+This tutorial walks from a downloaded ISO to one firmware-status request. Time: about **30 to 45 minutes** if the ISO is already on disk (the download itself is larger).
+
+## What you will do
+
+- create a VirtualBox lab VM (3 GB RAM, two NICs)
+- install OPNsense from the live ISO
+- open `https://192.168.1.1/`
+- create an API key and call `GET /api/core/firmware/status`
+
+## What you need
+
+| Tool | Version |
+| --- | --- |
+| OPNsense **dvd** ISO (amd64) | current major from [opnsense.org/download](https://opnsense.org/download/) |
+| VirtualBox | 7 or newer |
+| Host RAM | enough to give the VM 3 GB |
+
+:::note
+There is no official Docker image. Do not look for `docker compose` in this repo. The lab path is a VM. Official virtual notes: [docs.opnsense.org/manual/virtuals.html](https://docs.opnsense.org/manual/virtuals.html).
+:::
+
+## 1. Create the VM
+
+- Type: **BSD**, version **FreeBSD (64-bit)**
+- Memory: **3072 MB**
+- Disk: **16 GB**
+- Adapter 1: Host-only or Internal (this will be LAN)
+- Adapter 2: NAT (this will be WAN, DHCP)
+
+Attach the ISO to the optical drive. Start the VM.
+
+## 2. Run the installer
+
+At the live login:
+
+```text
+installer
+opnsense
+```
+
+(`root` / `opnsense` is the live shell and GUI, not the installer.)
+
+Accept the keymap. Choose UFS or ZFS. Pick the virtual disk. Set a root password you will remember. Complete install and reboot. Remove the ISO so you do not boot the live system again.
+
+## 3. Open the GUI
+
+From the host (or a client on the LAN network):
+
+```text
+https://192.168.1.1/
+```
+
+Accept the certificate warning. Login `root` and the password from step 2.
+
+If the page does not load, the host is not on the LAN segment. In VirtualBox, put your host on the same Host-only network as Adapter 1.
+
+## 4. Create an API key
+
+**System → Access → Users** → `root` (or a dedicated user) → API section → **+**.
+
+Save the downloaded file. It looks like:
+
+```ini
+key=...
+secret=...
+```
+
+The secret is shown **once**. If you lose it, create another key.
+
+## 5. Call firmware status
+
+Git Bash / Linux / macOS:
+
+```bash
+curl -k -u "YOUR_KEY:YOUR_SECRET" https://192.168.1.1/api/core/firmware/status
+```
+
+PowerShell:
+
+```powershell
+$pair = "YOUR_KEY:YOUR_SECRET"
+curl.exe -k -u $pair https://192.168.1.1/api/core/firmware/status
+```
+
+You want JSON (often a `status` field). HTML login page or `401` means the pair is wrong or the user lacks privileges.
+
+## You are done
+
+You installed a lab firewall and used the same API the GUI uses. Next:
+
+- [Installation](/docs/installation) for hardware USB and checksums
+- [User guide](/docs/user-guide) for day-to-day GUI
+- [API reference](/docs/api/overview) for more endpoints

@@ -1,0 +1,123 @@
+openapi: 3.0.3
+info:
+  title: OPNsense API (subset)
+  version: "1.0.0"
+  description: >
+    Lab subset used in this handbook. Full generated index:
+    https://docs.opnsense.org/development/api.html
+    Authentication is HTTP Basic (API key + secret).
+  license:
+    name: Documentation MIT; OPNsense is BSD-2-Clause
+servers:
+  - url: https://192.168.1.1
+    description: Default LAN after a fresh install
+tags:
+  - name: firmware
+  - name: system
+  - name: service
+  - name: auth
+paths:
+  /api/core/firmware/status:
+    get:
+      tags: [firmware]
+      summary: Firmware status (official how-to)
+      operationId: getFirmwareStatus
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: JSON firmware status
+        "401":
+          description: Bad or missing Basic auth
+  /api/core/firmware/update:
+    post:
+      tags: [firmware]
+      summary: Start a package update
+      operationId: postFirmwareUpdate
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: Update job accepted
+        "401":
+          description: Bad or missing Basic auth
+  /api/core/system/status:
+    get:
+      tags: [system]
+      summary: System status
+      operationId: getSystemStatus
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: JSON system status
+        "401":
+          description: Bad or missing Basic auth
+  /api/core/service/search:
+    get:
+      tags: [service]
+      summary: List services (generated table)
+      operationId: getServiceSearch
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: Service list
+    post:
+      tags: [service]
+      summary: List services (GUI grid body)
+      operationId: postServiceSearch
+      security:
+        - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current:
+                  type: integer
+                  example: 1
+                rowCount:
+                  type: integer
+                  example: 7
+                searchPhrase:
+                  type: string
+      responses:
+        "200":
+          description: Grid JSON (total, rows)
+  /api/auth/group/add/:
+    post:
+      tags: [auth]
+      summary: Create a group
+      operationId: postAuthGroupAdd
+      security:
+        - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+                    priv:
+                      type: string
+                    member:
+                      type: string
+      responses:
+        "200":
+          description: result saved + uuid
+        "401":
+          description: Bad or missing Basic auth
+components:
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Username is the API key. Password is the API secret.

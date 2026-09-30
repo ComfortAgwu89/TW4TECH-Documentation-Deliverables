@@ -1,0 +1,30 @@
+---
+sidebar_position: 0
+title: About OPNsense
+---
+
+# About OPNsense
+
+**OPNsense is the platform we document.** This site is our group's handbook for a first lab, not a copy of [docs.opnsense.org](https://docs.opnsense.org/) and not a fork of [github.com/opnsense/core](https://github.com/opnsense/core).
+
+## What is the platform?
+
+An open-source firewall and routing appliance on FreeBSD (amd64). It gives you a web GUI, a console menu, and a REST API under `/api/<module>/<controller>/<command>/`. Typical jobs: LAN/WAN assignment, DHCP, NAT, VPN, firmware updates.
+
+## Who uses it?
+
+Network and security administrators, and people who run a homelab firewall. You need a machine (or a VM) with two interfaces if you want a real WAN and LAN. Developers who write plugins or scripts talk to the same API the GUI uses.
+
+## Why the documentation matters
+
+The official handbook is large. A newcomer still trips on the same four facts: the live installer user is `installer` (not only `root`), the GUI is `https://192.168.1.1/`, there is **no official Docker image**, and the API uses HTTP Basic with a **key and a secret**, not `X-API-Key`. Those four details are what this site keeps in one place.
+
+## Group
+
+Lead on this docs repo: [Comfort Agwu](https://github.com/ComfortAgwu89). Other TW4Tech members add their handle in [CONTRIBUTORS.md](https://github.com/ComfortAgwu89/TW4TECH-Documentation-Deliverables/blob/main/CONTRIBUTORS.md).
+
+Subject-matter notes for the developer pages: **Comfort Agwu**, after reading the official API how-to and the architecture chapter.
+
+## Lab only
+
+Change `root` / `opnsense` before you put the box on a real network. The API secret is downloaded once. `curl -k` is for the factory certificate on a laptop lab.

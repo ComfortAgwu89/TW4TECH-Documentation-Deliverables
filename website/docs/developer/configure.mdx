@@ -1,0 +1,40 @@
+---
+sidebar_position: 3
+title: Configure
+---
+
+# Configure the client and the appliance
+
+Two sides: OPNsense (users, privileges, certificate) and your script (`OPN_URL`, `OPN_KEY`, `OPN_SECRET`).
+
+## On the firewall
+
+| Place | What |
+| --- | --- |
+| **System → Access → Users** | Create the API key. Secret is a one-time file. |
+| Effective Privileges | Must include the GUI page for that `/api/` module |
+| TLS | Factory cert, or install a real one under **System → Trust** |
+
+One key per application. If the secret is gone, add a new key. OPNsense does not keep the secret for a second download.
+
+## In your shell
+
+```bash
+export OPN_URL=https://192.168.1.1
+export OPN_KEY='paste-key'
+export OPN_SECRET='paste-secret'
+```
+
+PowerShell:
+
+```powershell
+$env:OPN_URL = "https://192.168.1.1"
+$env:OPN_KEY = "paste-key"
+$env:OPN_SECRET = "paste-secret"
+```
+
+Do not commit those values. They are not in this repo.
+
+## TLS
+
+`curl -k` and `verify=False` are for a laptop lab. On a shared network, put a proper certificate on the box and verify it.

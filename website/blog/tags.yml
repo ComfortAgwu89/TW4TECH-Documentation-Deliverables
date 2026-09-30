@@ -1,0 +1,12 @@
+opnsense:
+  label: OPNsense
+  permalink: /opnsense
+  description: OPNsense firewall
+api:
+  label: API
+  permalink: /api
+  description: REST API
+firewall:
+  label: firewall
+  permalink: /firewall
+  description: Firewall and routing

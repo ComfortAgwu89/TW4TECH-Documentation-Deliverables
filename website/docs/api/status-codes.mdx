@@ -1,0 +1,18 @@
+---
+sidebar_position: 3
+title: Status codes
+---
+
+# Status codes
+
+What you actually see against a lab box:
+
+| Code | When |
+| --- | --- |
+| `200` | Controller ran. Body is JSON. |
+| `401` | Missing or wrong Basic pair |
+| `403` | Authenticated but no privilege for that resource |
+| TLS error | Factory cert and you did not pass `-k` / `verify=False` |
+| HTML login page | Request never hit the API (wrong URL or no auth) |
+
+POST actions often return JSON like `{"result":"saved","uuid":"..."}` (group add) or a firmware job status. Always read the body, not only the code.

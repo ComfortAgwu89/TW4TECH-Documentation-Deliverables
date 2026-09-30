@@ -1,0 +1,43 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
+# Developer guide
+
+This section explains how to hook a script into OPNsense. There is no official npm SDK. You talk HTTPS and JSON. The GUI uses the same `/api/` routes.
+
+If you only want the web UI, use the [User guide](/docs/user-guide).
+
+## What we asked after reading the source docs
+
+Subject-matter notes: **Comfort Agwu**, after the official [API how-to](https://docs.opnsense.org/development/how-tos/api.html) and the architecture pages.
+
+**What is this API for?**  
+Anything the MVC GUI already does: firmware, services, users, firewall objects. Path shape: `/api/<module>/<controller>/<command>/`.
+
+**What do I need first?**  
+A running appliance, a user with the right privileges, and a key/secret pair. Reads and writes both use HTTP Basic. There is no open GET.
+
+**Is there an SDK?**  
+No first-party Node SDK. Python `requests` is what the official how-to shows. `curl` and `fetch` work the same: `-u key:secret`.
+
+**What are the defaults?**  
+LAN `192.168.1.1`, self-signed TLS, verbs **GET** (read) and **POST** (write or action). The generated tables sometimes list POST on a path the how-to calls with GET — check the how-to and the Network tab.
+
+**Where does it break?**  
+`-k` forgotten on a factory cert (TLS error). Secret lost (create a new key). User has no privilege for that module (HTML login or 403). PowerShell eating the `user:pass` string — use `curl.exe`.
+
+**How do errors look?**  
+HTTP status plus JSON when the API controller ran. A full HTML login page means you never reached the API.
+
+**If a writer documents a route and I change a plugin?**  
+The GUI is the contract. Open DevTools, filter `/api/`, copy method + JSON. See [Working with writers](/docs/developer/writers).
+
+## In this section
+
+1. [Integrate](/docs/developer/integrate) — curl, JS, Python
+2. [Configure](/docs/developer/configure) — key, secret, TLS
+3. [Code reference](/docs/developer/code-reference) — where `core` lives
+4. [Extend](/docs/developer/extend) — plugins, not a rewrite
+5. [Working with writers](/docs/developer/writers)

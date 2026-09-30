@@ -1,0 +1,17 @@
+.features {
+  display: flex;
+  align-items: center;
+  padding: 3rem 0;
+  width: 100%;
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-font-color-base);
+}
+
+.card {
+  height: 100%;
+  padding: 1.25rem 0.5rem 1.5rem;
+}
+
+.card h3 {
+  color: var(--ifm-heading-color);
+}

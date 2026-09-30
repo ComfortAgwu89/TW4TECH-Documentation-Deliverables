@@ -1,0 +1,38 @@
+---
+sidebar_position: 1
+title: Overview
+---
+
+# OPNsense API
+
+This page describes the HTTP API as documented by the project: [API reference](https://docs.opnsense.org/development/api.html) and [Use the API](https://docs.opnsense.org/development/how-tos/api.html).
+
+Base URL on a default lab box: `https://192.168.1.1`. JSON in and out. Path:
+
+```text
+/api/<module>/<controller>/<command>/[<param>/...]
+```
+
+Verbs: **GET** (read), **POST** (write or action).
+
+## Routes we walk here
+
+| Method | Path | Notes |
+| --- | --- | --- |
+| `GET` | [`/api/core/firmware/status`](/docs/api/firmware-status) | How-to example |
+| `GET` | [`/api/core/system/status`](/docs/api/system-status) | System controller |
+| `GET` | [`/api/core/service/search`](/docs/api/service-search) | Service list (GUI grids often POST JSON) |
+| `POST` | [`/api/core/firmware/update`](/docs/api/firmware-update) | Start package update |
+| `POST` | [`/api/auth/group/add/`](/docs/api/group-add) | Create a group (from the official how-to) |
+
+Machine-readable subset: [OpenAPI](/docs/api/openapi).
+
+The generated core index has many more modules (firewall, unbound, wireguard, …). We do not copy that table.
+
+## Auth
+
+HTTP Basic: API **key** as username, **secret** as password. See [Authentication](/docs/api/authentication).
+
+## Errors
+
+See [Status codes](/docs/api/status-codes).

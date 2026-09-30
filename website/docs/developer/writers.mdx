@@ -1,0 +1,26 @@
+---
+sidebar_position: 6
+title: Working with writers
+---
+
+# Working with writers
+
+Docs for this handbook live in `website/docs`. The product lives in `opnsense/core`. A writer should finish the [Quickstart](/docs/quickstart) without a call.
+
+## What to send when a route changes
+
+- method + full `/api/...` path
+- Basic auth (yes)
+- one real request (from DevTools → Copy as cURL)
+- one real response
+- privilege / GUI page that owns it
+
+A screenshot of the dashboard with no URL is not enough.
+
+## What writers will ask
+
+- "Is the key a header?" → no, HTTP Basic user/password
+- "Can I Docker this?" → not officially
+- "Why is my GET an HTML page?" → not authenticated, or not an API user
+
+If you do not know, say so. Do not invent a status code.

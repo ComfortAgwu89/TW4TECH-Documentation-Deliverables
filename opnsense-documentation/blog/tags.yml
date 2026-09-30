@@ -1,9 +1,0 @@
-opnsense:
-  label: OPNsense
-  description: Notes about the firewall lab
-api:
-  label: API
-  description: HTTP calls against a lab box
-lab:
-  label: Lab
-  description: Virtual machine and first login

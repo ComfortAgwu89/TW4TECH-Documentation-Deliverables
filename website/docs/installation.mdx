@@ -1,0 +1,68 @@
+---
+sidebar_position: 2
+title: Installation
+---
+
+# Install OPNsense
+
+How to get the **platform** running. Pick **one** path: hardware (ISO/USB) or a hypervisor VM. This page is the longer install reference. First time? Use the [Quickstart](/docs/quickstart).
+
+Official source for image types, checksums and the installer: [Initial Installation](https://docs.opnsense.org/manual/install.html). Official VM notes: [Virtual & Cloud](https://docs.opnsense.org/manual/virtuals.html).
+
+## Prerequisites
+
+| Item | Hardware | VM lab |
+| --- | --- | --- |
+| amd64 machine or hypervisor | Yes | Yes |
+| RAM | 2 GB+ (3 GB if you virtualize) | **3 GB** minimum |
+| Disk | 8 GB+ | 8 GB+, 16 GB is comfortable |
+| WAN + LAN | two NICs | two virtual adapters |
+| Image | dvd / vga / serial / nano | **dvd** ISO |
+
+OPNsense publishes images for **x86-64 only**.
+
+## Hardware (native)
+
+1. Download **dvd** or **vga** from [opnsense.org/download](https://opnsense.org/download/).
+2. Check SHA-256 against the `.sha256` file. Unpack `.bz2`.
+3. Write USB (`dd`, Etcher, Rufus) or burn the ISO.
+4. Boot the media. Live GUI: `https://192.168.1.1/` with `root` / `opnsense`.
+5. To install to disk: login `installer` / `opnsense`, then UFS or ZFS, set root password, reboot.
+
+`nano` images are for embedded cards (serial). Full images (dvd/vga/serial) give you the live environment and the installer.
+
+## Virtual lab
+
+OPNsense does **not** ship Docker. Hypervisors that support FreeBSD are the lab path: VirtualBox, VMware, Hyper-V, KVM.
+
+| Setting | Suggested value |
+| --- | --- |
+| RAM | 3072 MB |
+| Disk | 16 GB |
+| NIC 1 | LAN |
+| NIC 2 | WAN (DHCP) |
+
+Low RAM often fails the installer with a file-copy error. Official virtual page: minimum **3 GB**.
+
+Optional plugins after install: `os-virtualbox`, `os-vmware`, `os-qemu-guest-agent` under **System → Firmware → Plugins**.
+
+## After install
+
+| What | Default |
+| --- | --- |
+| LAN | `192.168.1.1/24`, DHCP server `.100–.200` |
+| WAN | DHCP client |
+| GUI | `https://192.168.1.1/` |
+| Users | `root` / password you set (live ISO default is `opnsense`) |
+
+Assign interfaces on the console if the first NIC is not LAN. Console menu option **1** is Assign interfaces.
+
+## If it fails
+
+| What you see | What to try |
+| --- | --- |
+| GUI timeout | Host not on LAN. Check Host-only / bridge. |
+| File copy failed in installer | Raise VM RAM to 3 GB+ |
+| Still on the live ISO after reboot | Detach the ISO |
+| `installer` login fails | You imported a config; password is that root password. Or run `opnsense-installer` from root shell (menu 8) |
+| API returns the login HTML | Key/secret missing, or user has no privilege for that page |

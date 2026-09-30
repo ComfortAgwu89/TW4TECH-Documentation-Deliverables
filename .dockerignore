@@ -1,0 +1,8 @@
+node_modules
+.git
+.env
+.env.local
+data/tasks.json
+npm-debug.log*
+README.md
+LICENSE

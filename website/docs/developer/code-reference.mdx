@@ -1,0 +1,31 @@
+---
+sidebar_position: 4
+title: Code reference
+---
+
+# Code reference (`opnsense/core`)
+
+We do not vendor the firewall in this repo. The product sources are [github.com/opnsense/core](https://github.com/opnsense/core). Architecture overview: [docs.opnsense.org/development/architecture.html](https://docs.opnsense.org/development/architecture.html).
+
+## Where the API lives
+
+API controllers sit under `src/opnsense/mvc/app/controllers/OPNsense/*/Api/`. A GUI action that hits `/api/core/firmware/status` is a method on the firmware API controller.
+
+The web UI and the public API share those classes. That is why the official advice is: open the GUI, F12, filter `/api/`.
+
+## Verbs
+
+Documented product rule:
+
+- **GET** — retrieve
+- **POST** — create, update, or run an action
+
+There is no separate PATCH/DELETE vocabulary on most core routes. A delete in the GUI is usually a POST to a `del` / `delete_*` command.
+
+## Config and backend
+
+`configd` runs backend scripts. MVC models describe XML config. You do not edit `config.xml` by hand if you can call the API or the GUI.
+
+## What we do not copy
+
+We do not paste thousands of generated endpoint rows. The generated index is [API Reference](https://docs.opnsense.org/development/api.html). This site keeps the five routes we actually walk in the [API section](/docs/api/overview).

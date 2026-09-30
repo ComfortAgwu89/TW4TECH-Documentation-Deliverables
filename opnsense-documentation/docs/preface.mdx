@@ -1,0 +1,21 @@
+---
+title: Preface
+---
+
+# Preface
+
+**OPNsense is the firewall.** This site is a booklet I keep open next to the [official handbook](https://docs.opnsense.org/). It is not a second copy of that handbook, and it is not the source tree at [github.com/opnsense/core](https://github.com/opnsense/core).
+
+## Who it is for
+
+Someone who can give an afternoon to a lab: a virtual machine, two network adapters, and a browser. Administrators who already run firewalls can skip ahead to [the calls](/docs/the-calls). Writers who will add a page later should read [keep writing](/docs/keep-writing) before they touch the sidebar.
+
+## What I refuse to pretend
+
+I will not tell you to `npm start` the firewall. I will not point you at a Docker image the project does not ship. I will not invent an `X-API-Key` header. The product already has a web page and an HTTP API. These notes only keep the path between them short.
+
+## Before a real network
+
+Replace the default `root` password before this box can see traffic you do not control. The API secret is downloaded once. `curl -k` belongs on a lab laptop, next to the factory certificate, not on a firewall that faces the internet.
+
+Comfort Agwu, [GitHub](https://github.com/ComfortAgwu89).

@@ -1,47 +1,36 @@
-# TW4TECH Documentation Deliverables
+# In the margin
 
-This repository contains my documentation deliverables for the TW4Tech technical writing program.
+Comfort Agwu’s lab booklet for OPNsense. The official handbook stays the book. These chapters are the margin: image, sign-in, the GUI rooms, then a few HTTP calls.
 
-## Project
+After GitHub Pages is on: [comfortagwu89.github.io/TW4TECH-Documentation-Deliverables](https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/)
 
-### OPNsense Documentation
+- Handbook: [docs.opnsense.org](https://docs.opnsense.org/)
+- Download: [opnsense.org/download](https://opnsense.org/download/)
+- Source: [github.com/opnsense/core](https://github.com/opnsense/core)
+- API how-to: [Use the API](https://docs.opnsense.org/development/how-tos/api.html)
 
-This deliverable focuses on improving the documentation experience for the OPNsense documentation repository.
+## Layout
 
-The work involved reviewing the existing documentation structure, identifying areas for improvement, and producing a production-ready README designed to provide clear onboarding and project information.
-
-## Deliverables
-
-- Documentation audit of the existing OPNsense README
-- Production-ready README.md
-- Installation and setup instructions
-- Quick-start guidance
-- Usage examples
-- Configuration information
-- Contributing guidelines
-- License information
-- Verified documentation links
-
-## Repository Structure
-
-TW4TECH Documentation
-
-Deliverables/
-
+```text
 ├── README.md
+├── .github/workflows/deploy-docs.yml
+└── opnsense-documentation/
+    ├── docs/                 seven chapters
+    ├── blog/                 journal
+    ├── static/openapi.yaml
+    └── src/pages/index.js    cover and contents
+```
 
-└── OPNsense/
+`audit/` is an older review of the official README. It is not one of the chapters.
 
-    └── README.md
+## Local preview
 
-## Verification
+```bash
+cd opnsense-documentation
+npm install
+npm start
+```
 
-The documented setup instructions, commands, links, and Markdown formatting were reviewed and tested before publication.
+`npm run build` fails if a chapter link points nowhere.
 
-## About the Project
-
-The documentation work was completed as part of the TW4Tech technical writing deliverables, with a focus on clarity, accuracy, usability, and beginner-friendly onboarding.
-
-## License
-
-This repository contains documentation work created for the TW4Tech program. Project-specific licenses are stated within the relevant project documentation.
+OPNsense is a trademark of Deciso B.V.

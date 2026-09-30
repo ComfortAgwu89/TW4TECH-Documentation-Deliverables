@@ -1,0 +1,49 @@
+---
+title: The calls
+---
+
+# The calls
+
+Base URL on a fresh lab: `https://192.168.1.1`. JSON in both directions.
+
+```text
+/api/<module>/<controller>/<command>/[<param>/...]
+```
+
+GET reads. POST writes or starts work. Authentication is HTTP Basic: the API key is the username, the secret is the password. There is no `X-API-Key` header in this product.
+
+## Replies worth naming
+
+| Code | Reading |
+| --- | --- |
+| 200 | Accepted. A status GET returns fields. It does not mean packages were upgraded. |
+| 401 | Missing credentials, a bad pair, or a user who may not call this command. |
+| 500 | The appliance failed the call. Read the body. Changing the header name will not fix it. |
+
+## The handful this booklet stands behind
+
+| Verb | Path | What it does |
+| --- | --- | --- |
+| GET | `/api/core/firmware/status` | Firmware status. The how-to’s first example. Does not upgrade. |
+| GET | `/api/core/system/status` | System status. A safe read. |
+| GET | `/api/core/service/search` | Services. The GUI grid often POSTs `current`, `rowCount`, and `searchPhrase`. |
+| POST | `/api/core/firmware/update` | Starts a package update. Use a box you can reinstall. |
+| POST | `/api/auth/group/add/` | Creates a group. Body wraps a `group` object (`name`, `description`). Success includes a uuid. |
+
+```bash
+curl -k -u "KEY:SECRET" \
+  https://192.168.1.1/api/core/firmware/status
+```
+
+```bash
+curl -k -u "KEY:SECRET" \
+  -H "Content-Type: application/json" \
+  -d "{\"group\":{\"name\":\"margin-readers\",\"description\":\"lab\"}}" \
+  https://192.168.1.1/api/auth/group/add/
+```
+
+A `200` on the update route means the job was accepted, not that every package is current. Watch **System → Firmware** while it runs. Pick a group name you can delete.
+
+## The file a tool can import
+
+A subset of these routes is [openapi.yaml](/openapi.yaml) (OpenAPI 3.0.3), stored at `static/openapi.yaml`. Import it in [editor.swagger.io](https://editor.swagger.io/) and aim try-it-out at the lab box. The full generated index stays on [docs.opnsense.org/development/api.html](https://docs.opnsense.org/development/api.html). This page does not paste that index.

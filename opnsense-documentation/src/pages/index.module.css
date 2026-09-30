@@ -1,23 +1,72 @@
-/**
- * CSS files with the .module.css suffix will be treated as CSS modules
- * and scoped locally.
- */
-
-.heroBanner {
-  padding: 4rem 0;
-  text-align: center;
-  position: relative;
-  overflow: hidden;
+.cover {
+  max-width: 42rem;
+  margin: 0 auto;
+  padding: 4.5rem 1.2rem 3rem;
 }
 
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
+.eyebrow {
+  color: #8a6230;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  margin-bottom: 0.8rem;
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.cover h1 {
+  font-weight: 500;
+  font-size: 3rem;
+  line-height: 1.05;
+  color: #321840;
+  margin-bottom: 0.8rem;
+}
+
+.rule {
+  width: 4rem;
+  height: 2px;
+  background: #8a6230;
+  border: 0;
+  margin: 1.2rem 0 1.4rem;
+}
+
+.deck {
+  font-size: 1.2rem;
+  line-height: 1.6;
+  color: #3d234d;
+}
+
+.contents {
+  list-style: none;
+  padding: 0;
+  margin: 2rem 0 0;
+}
+
+.contents li {
+  display: grid;
+  grid-template-columns: 2.2rem 1fr auto;
+  gap: 0.8rem;
+  align-items: baseline;
+  padding: 0.85rem 0;
+  border-top: 1px solid #e4d3b5;
+}
+
+.contents li:last-child {
+  border-bottom: 1px solid #e4d3b5;
+}
+
+.index {
+  color: #8a6230;
+  font-variant-numeric: tabular-nums;
+}
+
+.time {
+  color: #6d3d86;
+  font-size: 0.85rem;
+}
+
+[data-theme='dark'] .cover h1 {
+  color: #f6efe4;
+}
+
+[data-theme='dark'] .deck {
+  color: #f3e6d4;
 }

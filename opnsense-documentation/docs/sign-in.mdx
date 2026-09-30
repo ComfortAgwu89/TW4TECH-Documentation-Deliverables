@@ -1,0 +1,32 @@
+---
+title: Sign in
+---
+
+# Sign in
+
+The live image and the installed system do not share one account. Mixing them up costs the first twenty minutes.
+
+## On the live image
+
+```text
+user: installer
+password: opnsense
+```
+
+That pair runs the installer. `root` / `opnsense` is the live shell, and it is also the GUI until you choose another root password. The installer is not the GUI.
+
+Walk keymap, UFS or ZFS, the target disk, and a root password you will remember. Reboot. Remove the ISO or the USB stick. If you leave the ISO attached, you boot the live image again and wonder why the disk install vanished.
+
+## On the LAN
+
+From a computer that sits on `192.168.1.0/24`:
+
+```text
+https://192.168.1.1/
+```
+
+The certificate warning is the factory certificate. Accept it for the lab, or replace it later under **System → Trust**. Sign in as `root` and the password from the installer. If you never changed it, the password is still `opnsense`. Change it before this machine has a real WAN.
+
+## If the page does not open
+
+You are probably on the WAN adapter, or your laptop is not in `192.168.1.0/24`. The GUI listens on the LAN address. The default is `192.168.1.1/24` until you move it under **Interfaces**.

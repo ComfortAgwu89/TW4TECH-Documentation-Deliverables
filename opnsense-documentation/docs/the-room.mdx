@@ -1,0 +1,30 @@
+---
+title: The room
+---
+
+# The room
+
+After login, the GUI is a building. These are the rooms a first lab actually uses. The long tour is the [official handbook](https://docs.opnsense.org/).
+
+## Two walls
+
+LAN faces your test clients. WAN faces upstream. In VirtualBox, NAT on the second adapter is enough upstream. Clients on the LAN should use the firewall as their gateway only if you want their traffic to pass through it.
+
+DHCP for that LAN lives in **Services → DHCPv4**. Enable it on the LAN. Do not also run it on a WAN that already receives addresses from another server.
+
+## A short index of clicks
+
+| Intention | Menu |
+| --- | --- |
+| Name the interfaces | **Interfaces → Assignments**, then each interface page |
+| Addresses | the same interface pages |
+| Addresses for clients | **Services → DHCPv4** |
+| Leave the lab toward the internet | **Firewall → NAT → Outbound** |
+| People and keys | **System → Access → Users** |
+| Extra packages | **System → Firmware → Plugins** |
+
+Save, then apply. OPNsense often wants both. A saved change that was never applied is still the old network.
+
+## Two secrets, not one
+
+The password you type into the browser is not an API key. Creating a key under the user does not rotate that password. `root` / `opnsense` is a lab default. Replace the password even if you never call the API.

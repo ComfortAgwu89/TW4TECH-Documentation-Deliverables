@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog</id>
+    <title>In the margin Blog</title>
+    <updated>2026-09-30T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog"/>
+    <subtitle>In the margin Blog</subtitle>
+    <icon>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[I stopped rewriting the official handbook]]></title>
+        <id>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook</id>
+        <link href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook"/>
+        <updated>2026-09-30T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[The handbook at docs.opnsense.org is already the book. My mistake was trying to compete with it. What I needed was a margin: the three facts that stall a first boot, written where I can see them without searching.]]></summary>
+        <content type="html"><![CDATA[<p>The handbook at <a href="https://docs.opnsense.org/" target="_blank" rel="noopener noreferrer" class="">docs.opnsense.org</a> is already the book. My mistake was trying to compete with it. What I needed was a margin: the three facts that stall a first boot, written where I can see them without searching.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-margin">The margin<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook#the-margin" class="hash-link" aria-label="Direct link to The margin" title="Direct link to The margin" translate="no">​</a></h2>
+<p>The live installer is <code>installer</code> / <code>opnsense</code>. The GUI is <code>root</code>, on <code>https://192.168.1.1/</code>, until you move the LAN. There is no official Docker image. The download is an ISO from <a href="https://opnsense.org/download/" target="_blank" rel="noopener noreferrer" class="">opnsense.org/download</a>, and virtual machines are described at <a href="https://docs.opnsense.org/manual/virtuals.html" target="_blank" rel="noopener noreferrer" class="">docs.opnsense.org/manual/virtuals.html</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-door">The door<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook#the-door" class="hash-link" aria-label="Direct link to The door" title="Direct link to The door" translate="no">​</a></h2>
+<p>Once the page loads, scripts use the same house. HTTP Basic, key then secret, path <code>/api/&lt;module&gt;/&lt;controller&gt;/&lt;command&gt;/</code>. The how-to I keep pinned is <a href="https://docs.opnsense.org/development/how-tos/api.html" target="_blank" rel="noopener noreferrer" class="">Use the API</a>. The code is <a href="https://github.com/opnsense/core" target="_blank" rel="noopener noreferrer" class="">github.com/opnsense/core</a>.</p>
+<p>I do not need a second product in this repository to have something to curl. The appliance is the product.</p>]]></content>
+        <author>
+            <name>Comfort Agwu</name>
+            <uri>https://github.com/ComfortAgwu89</uri>
+        </author>
+        <category label="OPNsense" term="OPNsense"/>
+        <category label="Lab" term="Lab"/>
+    </entry>
+</feed>

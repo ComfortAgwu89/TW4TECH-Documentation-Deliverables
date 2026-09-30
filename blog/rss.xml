@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="rss.xsl"?>
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+    <channel>
+        <title>In the margin Blog</title>
+        <link>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog</link>
+        <description>In the margin Blog</description>
+        <lastBuildDate>Wed, 30 Sep 2026 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <language>en</language>
+        <item>
+            <title><![CDATA[I stopped rewriting the official handbook]]></title>
+            <link>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook</link>
+            <guid>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook</guid>
+            <pubDate>Wed, 30 Sep 2026 00:00:00 GMT</pubDate>
+            <description><![CDATA[The handbook at docs.opnsense.org is already the book. My mistake was trying to compete with it. What I needed was a margin: the three facts that stall a first boot, written where I can see them without searching.]]></description>
+            <content:encoded><![CDATA[<p>The handbook at <a href="https://docs.opnsense.org/" target="_blank" rel="noopener noreferrer" class="">docs.opnsense.org</a> is already the book. My mistake was trying to compete with it. What I needed was a margin: the three facts that stall a first boot, written where I can see them without searching.</p>
+<!-- -->
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-margin">The margin<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook#the-margin" class="hash-link" aria-label="Direct link to The margin" title="Direct link to The margin" translate="no">​</a></h2>
+<p>The live installer is <code>installer</code> / <code>opnsense</code>. The GUI is <code>root</code>, on <code>https://192.168.1.1/</code>, until you move the LAN. There is no official Docker image. The download is an ISO from <a href="https://opnsense.org/download/" target="_blank" rel="noopener noreferrer" class="">opnsense.org/download</a>, and virtual machines are described at <a href="https://docs.opnsense.org/manual/virtuals.html" target="_blank" rel="noopener noreferrer" class="">docs.opnsense.org/manual/virtuals.html</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-door">The door<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook#the-door" class="hash-link" aria-label="Direct link to The door" title="Direct link to The door" translate="no">​</a></h2>
+<p>Once the page loads, scripts use the same house. HTTP Basic, key then secret, path <code>/api/&lt;module&gt;/&lt;controller&gt;/&lt;command&gt;/</code>. The how-to I keep pinned is <a href="https://docs.opnsense.org/development/how-tos/api.html" target="_blank" rel="noopener noreferrer" class="">Use the API</a>. The code is <a href="https://github.com/opnsense/core" target="_blank" rel="noopener noreferrer" class="">github.com/opnsense/core</a>.</p>
+<p>I do not need a second product in this repository to have something to curl. The appliance is the product.</p>]]></content:encoded>
+            <category>OPNsense</category>
+            <category>Lab</category>
+        </item>
+    </channel>
+</rss>

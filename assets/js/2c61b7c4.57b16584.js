@@ -1,0 +1,1 @@
+"use strict";(globalThis.webpackChunkopnsense_documentation||=[]).push([[325],{3(e){e.exports=JSON.parse('{"metadata":{"permalink":"/TW4TECH-Documentation-Deliverables/blog","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Short notes written while learning the lab box","blogTitle":"Journal"}}')}}]);

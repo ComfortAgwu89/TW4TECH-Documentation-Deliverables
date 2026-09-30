@@ -1,0 +1,117 @@
+openapi: 3.0.3
+info:
+  title: OPNsense lab calls (handful)
+  version: "1.0.0"
+  description: >
+    Routes walked in Comfort Agwu's lab notes.
+    Full index: https://docs.opnsense.org/development/api.html
+    Send HTTP Basic (API key as username, secret as password).
+servers:
+  - url: https://192.168.1.1
+    description: Factory LAN address
+tags:
+  - name: firmware
+  - name: system
+  - name: service
+  - name: auth
+paths:
+  /api/core/firmware/status:
+    get:
+      tags: [firmware]
+      summary: Read firmware status
+      operationId: readFirmwareStatus
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: Status JSON
+        "401":
+          description: Basic auth missing or refused
+  /api/core/firmware/update:
+    post:
+      tags: [firmware]
+      summary: Start a package update on the lab box
+      operationId: startFirmwareUpdate
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: Job accepted
+        "401":
+          description: Basic auth missing or refused
+  /api/core/system/status:
+    get:
+      tags: [system]
+      summary: Read system status
+      operationId: readSystemStatus
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: Status JSON
+        "401":
+          description: Basic auth missing or refused
+  /api/core/service/search:
+    get:
+      tags: [service]
+      summary: List services
+      operationId: listServices
+      security:
+        - basic: []
+      responses:
+        "200":
+          description: Service list
+    post:
+      tags: [service]
+      summary: List services with a grid body
+      operationId: searchServices
+      security:
+        - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current:
+                  type: integer
+                  example: 1
+                rowCount:
+                  type: integer
+                  example: 7
+                searchPhrase:
+                  type: string
+      responses:
+        "200":
+          description: Grid JSON
+  /api/auth/group/add/:
+    post:
+      tags: [auth]
+      summary: Create a local group
+      operationId: createGroup
+      security:
+        - basic: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                group:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    description:
+                      type: string
+      responses:
+        "200":
+          description: Saved, with a uuid
+        "401":
+          description: Basic auth missing or refused
+components:
+  securitySchemes:
+    basic:
+      type: http
+      scheme: basic
+      description: Username is the API key. Password is the API secret.

@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([["3220"],{1912(e){e.exports=JSON.parse('{"blogBasePath":"/TW4TECH-Documentation-Deliverables/blog","blogTitle":"Blog","authorsListPath":"/TW4TECH-Documentation-Deliverables/blog/authors"}')}}]);

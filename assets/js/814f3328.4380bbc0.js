@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkopnsense_documentation||=[]).push([[472],{5513(e){e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"I stopped rewriting the official handbook","permalink":"/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook","unlisted":false,"date":"2026-09-30T00:00:00.000Z"}]}')}}]);

@@ -1,30 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xsl" href="atom.xsl"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog</id>
-    <title>In the margin Blog</title>
-    <updated>2026-09-30T00:00:00.000Z</updated>
+    <title>OPNsense Blog</title>
+    <updated>2026-09-22T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog"/>
-    <subtitle>In the margin Blog</subtitle>
+    <subtitle>OPNsense Blog</subtitle>
     <icon>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/img/favicon.ico</icon>
     <entry>
-        <title type="html"><![CDATA[I stopped rewriting the official handbook]]></title>
-        <id>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook</id>
-        <link href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook"/>
-        <updated>2026-09-30T00:00:00.000Z</updated>
-        <summary type="html"><![CDATA[The handbook at docs.opnsense.org is already the book. My mistake was trying to compete with it. What I needed was a margin: the three facts that stall a first boot, written where I can see them without searching.]]></summary>
-        <content type="html"><![CDATA[<p>The handbook at <a href="https://docs.opnsense.org/" target="_blank" rel="noopener noreferrer" class="">docs.opnsense.org</a> is already the book. My mistake was trying to compete with it. What I needed was a margin: the three facts that stall a first boot, written where I can see them without searching.</p>
+        <title type="html"><![CDATA[The OPNsense API is the same door the GUI already uses]]></title>
+        <id>https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/opnsense-api-same-as-gui</id>
+        <link href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/opnsense-api-same-as-gui"/>
+        <updated>2026-09-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This article explains why we document OPNsense as a firewall appliance with a REST API, not as a Node process you start with npm. If you expected docker compose up and a JSON file, read this first.]]></summary>
+        <content type="html"><![CDATA[<p>This article explains why we document OPNsense as a firewall appliance with a REST API, not as a Node process you start with npm. If you expected <code>docker compose up</code> and a JSON file, read this first.</p>
 <!-- -->
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-margin">The margin<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook#the-margin" class="hash-link" aria-label="Direct link to The margin" title="Direct link to The margin" translate="no">​</a></h2>
-<p>The live installer is <code>installer</code> / <code>opnsense</code>. The GUI is <code>root</code>, on <code>https://192.168.1.1/</code>, until you move the LAN. There is no official Docker image. The download is an ISO from <a href="https://opnsense.org/download/" target="_blank" rel="noopener noreferrer" class="">opnsense.org/download</a>, and virtual machines are described at <a href="https://docs.opnsense.org/manual/virtuals.html" target="_blank" rel="noopener noreferrer" class="">docs.opnsense.org/manual/virtuals.html</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-door">The door<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/margin-notes-beside-the-handbook#the-door" class="hash-link" aria-label="Direct link to The door" title="Direct link to The door" translate="no">​</a></h2>
-<p>Once the page loads, scripts use the same house. HTTP Basic, key then secret, path <code>/api/&lt;module&gt;/&lt;controller&gt;/&lt;command&gt;/</code>. The how-to I keep pinned is <a href="https://docs.opnsense.org/development/how-tos/api.html" target="_blank" rel="noopener noreferrer" class="">Use the API</a>. The code is <a href="https://github.com/opnsense/core" target="_blank" rel="noopener noreferrer" class="">github.com/opnsense/core</a>.</p>
-<p>I do not need a second product in this repository to have something to curl. The appliance is the product.</p>]]></content>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-problem">The problem<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/opnsense-api-same-as-gui#the-problem" class="hash-link" aria-label="Direct link to The problem" title="Direct link to The problem" translate="no">​</a></h2>
+<p>OPNsense is a FreeBSD firewall. The interesting contract for a writer is not “clone this repo and run a server”. It is: boot an ISO, reach <code>https://192.168.1.1/</code>, then call the same <code>/api/</code> routes the browser already calls when you click Save.</p>
+<p>That is easy to miss. A lot of student docs invent a toy backend so the README has <code>curl</code>. Here the backend already exists. The work is to name the four facts that fail on a clean ISO: installer user vs <code>root</code>, LAN address, no official Docker image, HTTP Basic with a key <strong>and</strong> a secret.</p>
+<p>Platform repo: <a href="https://github.com/opnsense/core" target="_blank" rel="noopener noreferrer" class="">github.com/opnsense/core</a>. Official how-to: <a href="https://docs.opnsense.org/development/how-tos/api.html" target="_blank" rel="noopener noreferrer" class="">Use the API</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-no-docker-actually-means">What “no Docker” actually means<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/opnsense-api-same-as-gui#what-no-docker-actually-means" class="hash-link" aria-label="Direct link to What “no Docker” actually means" title="Direct link to What “no Docker” actually means" translate="no">​</a></h2>
+<p>The project ships dvd/vga/serial/nano images. Virtual install is “any hypervisor that runs FreeBSD”, with a <strong>3 GB</strong> RAM floor. There is no <code>Dockerfile</code> in <code>opnsense/core</code> that we are supposed to <code>compose up</code>. If a blog shows a container named OPNsense, it is not the official appliance. Say that before someone copies a compose file into a Friday demo.</p>
+<!-- -->
+<p>A script with <code>-u key:secret</code> walks the right-hand path. It does not scrape HTML.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-a-first-api-call-walks-the-product">How a first API call walks the product<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/opnsense-api-same-as-gui#how-a-first-api-call-walks-the-product" class="hash-link" aria-label="Direct link to How a first API call walks the product" title="Direct link to How a first API call walks the product" translate="no">​</a></h2>
+<p>You create the pair under <strong>System → Access → Users</strong>. The download is an ini file. The secret is not stored for a second time. Then:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">curl -k -u "KEY:SECRET" https://192.168.1.1/api/core/firmware/status</span><br></div></code></pre></div></div>
+<p><code>-k</code> is the factory certificate. Lab only.</p>
+<p>The how-to then shows a POST to <code>/api/core/firmware/update</code> when you really want packages applied. That is a write. Do not put it in a screenshot next to “hello world” unless you mean it.</p>
+<p>Two details that ate time when I wrote the pages:</p>
+<ol>
+<li class="">Generated tables and the how-to disagree on GET vs POST for some commands (<code>firmware/status</code> is GET in the how-to curl, POST in the firmware table). I document the how-to first, then the table.</li>
+<li class="">A 200 with an HTML login page is not “the API is down”. It is “Basic auth never arrived” or “this user cannot open Firmware”.</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-this-is-easier-to-explain-than-a-fake-task-api">Why this is easier to explain than a fake task API<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/opnsense-api-same-as-gui#why-this-is-easier-to-explain-than-a-fake-task-api" class="hash-link" aria-label="Direct link to Why this is easier to explain than a fake task API" title="Direct link to Why this is easier to explain than a fake task API" translate="no">​</a></h2>
+<p>When the native path (USB ISO) and the lab path (VirtualBox) share the same GUI and the same curl, you maintain one contract. The moment you document a homemade <code>POST /api/v1/tasks</code>, you are no longer talking about the assigned platform.</p>
+<p>The appliance also forces you to be honest about size. You cannot hide behind “it starts in two seconds”. You have to say: download the ISO, give the VM 3 GB, put the host on the LAN. Readers who need a firewall can finish. Readers who wanted npm will pick another product.</p>
+<p>I would still keep one failed command in the troubleshooting table: curl without <code>-u</code> against <code>/api/core/firmware/status</code>. It is the fastest way to show that GET is not public.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="links">Links<a href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/blog/opnsense-api-same-as-gui#links" class="hash-link" aria-label="Direct link to Links" title="Direct link to Links" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/docs/quickstart">Quickstart</a></li>
+<li class=""><a class="" href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/docs/installation">Installation</a></li>
+<li class=""><a class="" href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/docs/api/overview">API overview</a></li>
+<li class=""><a class="" href="https://comfortagwu89.github.io/TW4TECH-Documentation-Deliverables/docs/developer/code-reference">Code reference</a></li>
+</ul>]]></content>
         <author>
             <name>Comfort Agwu</name>
             <uri>https://github.com/ComfortAgwu89</uri>
         </author>
         <category label="OPNsense" term="OPNsense"/>
-        <category label="Lab" term="Lab"/>
+        <category label="API" term="API"/>
+        <category label="firewall" term="firewall"/>
     </entry>
 </feed>

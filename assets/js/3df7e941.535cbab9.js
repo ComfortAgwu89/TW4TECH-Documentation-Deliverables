@@ -1,1 +1,0 @@
-"use strict";(globalThis.webpackChunkopnsense_documentation||=[]).push([[320],{9370(t){t.exports=JSON.parse('{"authors":[{"name":"Comfort Agwu","title":"Technical writer","url":"https://github.com/ComfortAgwu89","imageURL":"https://github.com/ComfortAgwu89.png","key":"comfort","page":null,"count":1}]}')}}]);
